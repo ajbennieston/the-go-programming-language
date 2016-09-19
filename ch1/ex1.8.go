@@ -14,8 +14,8 @@ func main() {
     for _, url := range os.Args[1:] {
 
         switch {
-            case strings.HasPrefix(url, "https://"):
-            case strings.HasPrefix(url, "http://"):
+            case strings.HasPrefix(url, "https://"): // do nothing
+            case strings.HasPrefix(url, "http://"):  // do nothing
             default:
                 url = "http://" + url
         }
