@@ -1,3 +1,9 @@
+Much of the code in this repository is taken from
+The Go Programming Language, Donovan and Kernighan, Addison-Wesley 2016
+
+The remaining code constitutes my solutions to the exercises, and, where
+appropriate, is provided under the terms of the MIT License:
+
 MIT License
 
 Copyright (c) 2016 Andrew J. Bennieston
