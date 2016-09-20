@@ -5,6 +5,7 @@ import (
     "fmt"
     "os"
     "strconv"
+    "time"
     "gopl.io/ch2/popcount"
 )
 
@@ -16,6 +17,22 @@ func main() {
             continue
         }
 
-        fmt.Printf("The population count of %v is %d\n", val, popcount.PopCount(val))
+        calcTime(val, popcount.PopCount)
+        calcTime(val, popcount.PopCountLoop)
+        calcTime(val, popcount.PopCountShift)
+        calcTime(val, popcount.PopCountRightmostNonzero)
+        fmt.Printf("--\n")
     }
+}
+
+func calcTime(val uint64, f func(uint64)int) float64 {
+    start := time.Now()
+    // Run it a few times for timing...
+    var result int
+    for i := 0; i < 1000; i++ {
+        result = f(val)
+    }
+    dt := time.Since(start).Seconds()
+    fmt.Printf("[%g] %v has %d non-zero bits.\n", dt, val, result)
+    return dt
 }
