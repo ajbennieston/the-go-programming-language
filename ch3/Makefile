@@ -8,4 +8,4 @@ clean:
 	rm -f $(PROGRAMS)
 
 %: %.go
-	GOPATH=`pwd` go build $<
+	GOPATH=`pwd`/.. go build $<
