@@ -12,8 +12,8 @@ import (
     "math"
     "math/rand"
     "net/http"
-    "strconv"
     "sync"
+    "storm/convert"
 )
 
 var mu sync.Mutex
@@ -49,35 +49,19 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
         switch k {
         case "cycles":
-            cycles = convertInt(v[0], cycles)
+            cycles = convert.ConvertInt(v[0], cycles)
         case "res":
-            res = convertFloat64(v[0], res)
+            res = convert.ConvertFloat64(v[0], res)
         case "size":
-            size = convertInt(v[0], size)
+            size = convert.ConvertInt(v[0], size)
         case "nframes":
-            nframes = convertInt(v[0], nframes)
+            nframes = convert.ConvertInt(v[0], nframes)
         case "delay":
-            delay = convertInt(v[0], delay)
+            delay = convert.ConvertInt(v[0], delay)
         }
     }
 
     lissajous(w, cycles, res, size, nframes, delay)
-}
-
-func convertInt(s string, fallback int) int {
-    if val, err := strconv.Atoi(s); err != nil {
-        return fallback
-    } else {
-        return val
-    }
-}
-
-func convertFloat64(s string, fallback float64) float64 {
-    if val, err := strconv.ParseFloat(s, 64); err != nil {
-        return fallback
-    } else {
-        return val
-    }
 }
 
 // counter echoes the number of calls so far.
