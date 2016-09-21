@@ -78,7 +78,6 @@ type Polygon struct {
 }
 
 func surfacePlot(canvas Canvas, out io.Writer) {
-    // Populate canvas data
     fmt.Fprintf(out,
                "<svg xmlns='http://www.w3.org/2000/svg' " +
                "style='stroke: grey; fill: white; stroke-width: 0.7' " +
