@@ -53,7 +53,7 @@ func corner(i, j int) (float64, float64, bool) {
     y := xyrange * (float64(j) / cells - 0.5)
 
     // Compute surface height z
-    z := f(x, y)
+    z := f2(x, y)
     if math.IsInf(z, 0) || math.IsNaN(z) {
         return 0.0, 0.0, true
     }
@@ -65,7 +65,11 @@ func corner(i, j int) (float64, float64, bool) {
 
 }
 
-func f(x, y float64) (float64) {
+func f(x, y float64) float64 {
     r := math.Hypot(x, y) // distance from (0, 0)
     return math.Sin(r) / r
+}
+
+func f2(x, y float64) float64 {
+    return (math.Sin(x) + math.Cos(y)) / 10.
 }
