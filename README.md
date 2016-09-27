@@ -1,7 +1,8 @@
 # the-go-programming-language
 Exercises and examples from The Go Programming Language book.
 
-This repository contains the examples and exercises from the book
+This repository contains the examples and exercises from the book:
+
     The Go Programming Language
     Alan A. Donovan and Brian W. Kernighan
     Addison-Wesley, 2016.
