@@ -6,11 +6,11 @@ import (
     "fmt"
 )
 
-func appendInt(x []int, y int) []int {
+func appendInt(x []int, y ...int) []int {
     var z []int
     xlen := len(x)
     xcap := cap(x)
-    zlen := xlen + 1
+    zlen := xlen + len(y)
     if zlen <= xcap {
         // There is room to grow. Extend the slice.
         z = x[:zlen]
@@ -24,7 +24,7 @@ func appendInt(x []int, y int) []int {
         z = make([]int, zlen, zcap)
         copy(z, x)
     }
-    z[xlen] = y
+    copy(z[xlen:], y)
     return z
 }
 
@@ -32,7 +32,9 @@ func main() {
     var x, y []int
     for i := 0; i < 10; i++ {
         y = appendInt(x, i)
-        fmt.Printf("%d cap=%2d\t%v\n", i, cap(y), y)
+        fmt.Printf("%2d cap=%2d\t%v\n", i, cap(y), y)
         x = y
     }
+    y = appendInt(x, 98, 99, 100)
+    fmt.Printf("%2d cap=%2d\t%v\n", 10, cap(y), y)
 }
