@@ -16,8 +16,7 @@ const (
     Year = 365 * Day
 )
 
-func main() {
-    const templ = `{{.TotalCount}} issues:
+const templ = `{{.TotalCount}} issues:
 {{range .Items}}------------------------------
 Number: {{.Number}}
 User: {{.User}}
@@ -26,6 +25,7 @@ Age: {{.CreatedAt | daysAgo}} days
 {{end}}
 `
 
+func main() {
     result, err := github.SearchIssues(os.Args[1:])
     if err != nil {
         log.Fatal(err)
